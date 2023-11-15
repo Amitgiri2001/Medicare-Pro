@@ -1,0 +1,16 @@
+.container {
+    /* padding: 2% 0%; */
+    margin: 2% 0%;
+}
+
+.slider {
+    width: 95vw;
+    margin: auto;
+}
+
+.container div img {
+
+    width: 90%;
+    height: auto;
+    margin: auto;
+}

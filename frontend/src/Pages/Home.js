@@ -9,18 +9,7 @@ const Home = () => {
         <React.Fragment>
             <TopSection />
             <TopSlider />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+
             <Trending />
         </React.Fragment>
     )
