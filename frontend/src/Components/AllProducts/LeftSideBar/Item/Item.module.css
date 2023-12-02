@@ -1,0 +1,14 @@
+.container {
+    padding: 0% 2%;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container li {
+    text-decoration: none;
+    list-style: none;
+}

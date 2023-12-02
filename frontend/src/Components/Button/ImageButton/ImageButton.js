@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from './ImageButton.module.css';
 import { Link } from 'react-router-dom';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
@@ -28,20 +28,20 @@ const ImageButton = (props) => {
         >
             <img className={styles.img} src={Image} alt="user_image" />
             <button className={styles.btn}>{text}</button>
-            {text === "LogIn" && 
+            {text === "LogIn" &&
                 (
                     <i>
-                        {authenticationPageVisible ?  <FaChevronUp /> : <FaChevronDown />}
-                    </i> 
+                        {authenticationPageVisible ? <FaChevronUp /> : <FaChevronDown />}
+                    </i>
                 )
             }
-            {text === "LogIn" && 
-                authenticationPageVisible && 
+            {text === "LogIn" &&
+                authenticationPageVisible &&
                 (
                     <Link
-                        className={styles.authentication_container} 
+                        className={styles.authentication_container}
                         onMouseOver={handleAuthenticationContainerMouseOver}
-                    >  
+                    >
                         <Link to="login">
                             <button className={styles.login}>Login</button>
                         </Link>
@@ -49,6 +49,18 @@ const ImageButton = (props) => {
                             <h1 className={styles.signup}>
                                 <span>New Customer?</span>
                                 <span>Sign Up</span>
+                            </h1>
+                        </Link>
+                        <Link to="signup">
+                            <h1 className={styles.signup}>
+                                <span>Your Profile</span>
+
+                            </h1>
+                        </Link>
+                        <Link to="signup">
+                            <h1 className={styles.signup}>
+                                <span>Orders</span>
+
                             </h1>
                         </Link>
                     </Link>

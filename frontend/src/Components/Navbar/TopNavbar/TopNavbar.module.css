@@ -72,3 +72,9 @@
 a {
     text-decoration: none;
 }
+
+.userImg {
+    padding: 5px;
+    margin: 5px;
+    background: white;
+}

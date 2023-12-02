@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import styles from "./RightSideBar.module.css";
 import ReactSlider from "./ReactSlider/ReactSlider";
 
-const RightSideBar = () => {
+const RightSideBar = ({ title, description, rating, price, discountPercentage }) => {
   return (
     <div className={styles.page}>
       <div className={styles.content}>
-        <h1>Volini Spray 100gm</h1>
-        <p>Treatments Pain Relief Application</p>
+        <h1>{title}</h1>
+        <p>{description}</p>
         <div className={styles.rating}>
-          <p>5.0</p>
+          <p>{rating}</p>
           <p>⭐⭐⭐⭐⭐</p>
           <p>(1 Ratings & 1 Reviews)</p>
         </div>
         <div className={styles.price}>
-          <p className={styles.rs}>₹281.60 </p>
+          <p className={styles.rs}>₹{Math.round((price - (price * discountPercentage * .01)) * 80)}</p>
           <p className={styles.mrp}>
-            MRP <span>₹320.00</span>
+            MRP <span>₹{Math.round(price * 80)}</span>
           </p>
-          <p className={styles.save}>Save 12 %</p>
+          <p className={styles.save}>Save {Math.round(discountPercentage)} %</p>
         </div>
         <button className={styles.addToCartBtn}>ADD TO CART</button>
         <p>SIZE:100g</p>

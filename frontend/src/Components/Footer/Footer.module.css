@@ -75,7 +75,7 @@ li {
     margin-top: 20px;
 }
 
-input {
+.newsletterForm input {
     padding: 10px;
     flex: 1;
 }

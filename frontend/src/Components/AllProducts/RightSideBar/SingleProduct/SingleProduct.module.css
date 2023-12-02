@@ -1,0 +1,152 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.imageContainer {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    position: relative;
+}
+
+.detailsContainer {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.detailsContainer:hover .name {
+    color: rgb(75, 75, 238);
+}
+
+.priceContainer {
+    margin-top: 2%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.cardImg {
+    width: 95%;
+    height: auto;
+
+}
+
+.heartImg {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+    /* background-color: #fff; */
+    border-radius: 5px;
+}
+
+.compare {
+    display: flex;
+}
+
+
+/* price
+ */
+.priceContainer p {
+    margin: 0%;
+    color: black;
+
+}
+
+.bestPrice {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.mrp {
+    font-size: 130%;
+    opacity: .6;
+    text-decoration: line-through;
+
+}
+
+.discountPercentage {
+    color: green;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+/* rating button */
+.ratingContainer {
+    display: flex;
+    align-items: center;
+}
+
+.ratingContainer p {
+    margin: 0%;
+    opacity: .6;
+}
+
+.rating {
+    padding: 1%;
+    color: white;
+    background-color: green;
+    border: .3px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    margin: 0% .5%;
+
+}
+
+/* heading */
+.name {
+    margin-bottom: 0%;
+}
+
+
+@media (max-width: 500px) {
+    .bestPrice {
+        font-size: 100%;
+    }
+
+    .mrp {
+        font-size: 90%;
+    }
+
+    .mrpPrice {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rating {
+        width: 64px;
+    }
+
+    .ratingContainer p {
+        font-size: 80%;
+    }
+
+    .heartImg {
+        height: 15px;
+        width: 15px;
+    }
+
+    .compare {
+        font-size: 75%;
+    }
+
+    .name {
+        font-size: 90%;
+    }
+
+    .container p {
+        font-size: 75%;
+    }
+}

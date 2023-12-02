@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    width: 100vw;
+    background-color: #f0f2f5;
+    justify-content: space-evenly;
+
+}
+
+.left {
+    width: 24%;
+    height: 100%;
+}
+
+.right {
+    width: 74%;
+}

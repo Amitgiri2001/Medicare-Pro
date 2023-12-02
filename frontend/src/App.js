@@ -10,6 +10,7 @@ import Error from './Pages/Error';
 import ProductDetailsPage from './Pages/ProductDetailsPage';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
+import AllProducts from './Components/AllProducts/AllProducts';
 
 const router = createBrowserRouter([
   // template's
@@ -17,10 +18,11 @@ const router = createBrowserRouter([
     path: '/', element: <Template />,
     errorElement: <Error />, children: [
       { path: '/', element: <Home /> },
-      { path: '/login', element : <Login /> },
-      { path: '/signup', element : <Signup /> },
-      { path: '/products', element: <Products /> },
-      { path: '/products/product1', element: <ProductDetailsPage /> },
+      { path: '/login', element: <Login /> },
+      { path: '/signup', element: <Signup /> },
+      { path: '/products', element: <AllProducts /> },
+      { path: '/products/:productId', element: <ProductDetailsPage /> },
+      { path: '/all_products', element: <AllProducts /> },
     ]
   },
 

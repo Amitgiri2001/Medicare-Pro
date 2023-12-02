@@ -1,0 +1,18 @@
+.container {
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.line {
+    width: 90%;
+    text-align: center;
+}
+
+.pagination {
+    text-align: center;
+    padding: 5%;
+}
+
+.pagination button {
+    margin: 3%;
+}

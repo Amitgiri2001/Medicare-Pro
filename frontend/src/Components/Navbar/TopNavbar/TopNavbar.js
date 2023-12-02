@@ -32,6 +32,8 @@ function TopNavbar() {
       <ImageButton url={cartImage} text="Cart" />
       <Link to="products">
         <ImageButton url={ProductImg} text="Products" /></Link>
+
+      <button className={styles.userImg}><img src={userImage} alt="user Profile" /></button>
     </div>
   );
 }

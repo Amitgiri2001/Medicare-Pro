@@ -1,24 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Authentication.module.css";
 
 const Loginform = () => {
-    const handaleSubmit = (e) => {
+    const [enteredValues, setEnteredValues] = useState({
+        email: "", password: "",
+    })
+    const handleSubmit = (e) => {
         e.preventDefault();
+
+        // ********** do something with the data
+        console.log(enteredValues);
+
+        const respnse = fetch("https://api.escuelajs.co/api/v1/auth/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "email": enteredValues.email,
+                "password": enteredValues.password,
+            })
+        }).then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+
+        // clear the input fields
+        setEnteredValues((prev) => ({
+            ...prev,
+            email: "",
+            password: "",
+        }));
     }
-    return(
+
+    function handleChange(identifier, value) {
+        setEnteredValues((prevValues) => ({
+            ...prevValues,
+            [identifier]: value
+
+        }))
+    }
+    return (
         <div className={styles.authentication_form}>
             <h1>Please Log in</h1>
-            <form className={styles.authentication_container} onSubmit={handaleSubmit}>
+            <form className={styles.authentication_container} onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="userEmail">Email address:</label>
-                    <input type="email" id="userEmail"></input>
+                    <input type="email" id="userEmail" onChange={(event) => handleChange('email', event.target.value)} value={enteredValues.email}></input>
                 </div>
                 <div>
                     <label htmlFor="userPassword">
                         <span>Password:</span>
                         <span>Forget Password?</span>
                     </label>
-                    <input type="text" id="userPassword"></input>
+                    <input type="text" id="userPassword" onChange={(event) => handleChange('password', event.target.value)} value={enteredValues.password}></input>
                 </div>
                 <button className={styles.loginButton}>Log in</button>
                 <p>

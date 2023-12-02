@@ -1,56 +1,58 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styles from "./ProductDetails.module.css";
 import ImageSlider from "./ImageSlider/ImageSlider";
 import RightSideBar from "./RightSideBar/RightSideBar";
 import More from "./MoreSection/More";
 import Rating from "./Rating/Rating";
 import FixedBottomComponent from './FixedBottomComponent/FixedBottomComponent';
+import { useParams } from 'react-router-dom';
 
 const ProductDetails = () => {
+  // get product id from params
+  let params = useParams();
+  const productId = params.productId;
+  console.log("ProductId" + productId);
+
   const containerRef = useRef();
   const fixedComponentRef = useRef();
 
+  const [product, setProduct] = useState([]);
+
   useEffect(() => {
-    const containerObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Main content container is visible, hide the fixed component
-            fixedComponentRef.current.style.display = 'none';
-          } else {
-            // Main content container is not visible, show the fixed component
-            fixedComponentRef.current.style.display = 'block';
-          }
-        });
-      },
-      { root: null, rootMargin: '0px', threshold: .4 }
-      // from 40% to the bottom of the page
-    );
 
-    containerObserver.observe(containerRef.current);
+    // fetch data from api
+    async function fetchProduct() {
+      const product = await fetch(`https://dummyjson.com/products/${productId}`);
+      const singleProduct = await product.json();
+      setProduct(singleProduct);
+    }
+    fetchProduct();
+  }, [productId]);
 
-    return () => {
-      containerObserver.disconnect(); // Use disconnect instead of unobserve
-    };
-  }, []);
+  const { id, title, description, images, price, discountPercentage, rating, thumbnail, category, brand } = product;
+
+  // console.log(thumbnail);
+
+
 
   return (
     <div>
-      <div ref={containerRef} className={styles.container}>
+      {product.length !== 0 && <div ref={containerRef} className={styles.container}>
+        {console.log(product)}
         <div className={styles.leftContainer}>
-          <ImageSlider />
+          <ImageSlider images={images} />
         </div>
         <div className={styles.rightContainer}>
-          <RightSideBar />
+          <RightSideBar title={title} description={description} rating={rating} price={price} discountPercentage={discountPercentage} />
         </div>
-      </div>
+      </div>}
 
       <div ref={fixedComponentRef}>
         <FixedBottomComponent />
       </div>
 
       <div className={styles.section}>
-        <More />
+        <More description={description} />
         <Rating />
       </div>
     </div>

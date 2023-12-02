@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./More.module.css";
-const More = () => {
+const More = ({ description }) => {
   const [activeContentIndex, setActiveContentIndex] = useState(0);
   return (
     <div className={styles.more}>
@@ -44,79 +44,7 @@ const More = () => {
       </div>
       {activeContentIndex === 0 && (
         <div>
-          <h1>What Volini is Used For?</h1>
-          <p>
-            Volini is a nutritional supplement that contains various components
-            with several uses to support overall health and well-being.
-          </p>
-
-          <h2>Ginseng:</h2>
-          <p>
-            <ul>
-              <li>
-                Promotes carbohydrate metabolism and allows skeletal muscle to
-                oxidize free fatty acids for energy production.
-              </li>
-              <li>
-                Supports male reproductive health by promoting testosterone and
-                spermatozoa levels.
-              </li>
-              <li>
-                Promotes memory and learning and nutritionally supports immune
-                function and cardiovascular health.
-              </li>
-            </ul>
-          </p>
-
-          <h2>Vitamins:</h2>
-          <p>
-            <ul>
-              <li>
-                Vitamin C, vitamin A, and vitamin D help in the development and
-                maintenance of bones, cartilage, teeth, and gums.
-              </li>
-              <li>
-                Vitamin C helps in connective tissue formation and wound
-                healing.
-              </li>
-              <li>
-                Vitamin B2, vitamin B6, and pantothenic acid help in tissue
-                formation.
-              </li>
-              <li>Folate and vitamin B12 help to form red blood cells.</li>
-              <li>
-                Vitamin C and vitamin E act as antioxidants to prevent oxidative
-                stress.
-              </li>
-              <li>
-                Vitamin A helps maintain eyesight, skin, membranes, and immune
-                function.
-              </li>
-              <li>
-                Vitamin C, vitamin B1, vitamin B2, vitamin B3, vitamin B6,
-                vitamin B12, and vitamin B9 help the body metabolize fats and
-                proteins.
-              </li>
-            </ul>
-          </p>
-
-          <h2>Minerals:</h2>
-          <p>
-            <ul>
-              <li>Help maintain immune function.</li>
-              <li>Provide support for healthy metabolism.</li>
-              <li>Support the function of the thyroid gland.</li>
-              <li>
-                Aid in the development and maintenance of bones and teeth.
-              </li>
-              <li>Assist in tissue formation.</li>
-              <li>
-                Help to form red blood cells and ensure their proper function.
-              </li>
-              <li>Maintain proper muscle function.</li>
-              <li>Act as antioxidants for the maintenance of good health.</li>
-            </ul>
-          </p>
+          <p>{description}</p>
         </div>
       )}
 
