@@ -5,9 +5,9 @@
     align-items: center;
     width: 2em;
     /* height: 80px; */
-    padding: .5em 1.5em;
+    padding: .5em 2em;
     margin: 0% 1%;
-    border: 1px solid #000;
+    border: 0.01rem solid gray;
     border-radius: 10px;
     background-color: #fff;
     cursor: pointer;
@@ -36,12 +36,13 @@
 }
 
 .container i {
-    margin-top: 0.3rem;
+    display: flex;
+    align-items: center;
 }
 
 .authentication_container {
     position: absolute;
-    top: 2.6rem;
+    top: 2.2rem;
     left: 0;
     padding: 0.5rem;
     width: 12rem;

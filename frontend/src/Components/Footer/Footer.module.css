@@ -54,6 +54,24 @@
     flex-wrap: wrap;
 }
 
+@media(max-width : 850px) {
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .section:last-child {
+        grid-column: 2 / span 2;
+    }
+}
+@media(max-width : 500px) {
+    .section:last-child {
+        grid-column: initial;
+    }
+    .footer{
+        grid-template-columns: 1fr;
+    }
+}
+
 .section {
     flex: 1;
     margin-right: 20px;
@@ -66,11 +84,16 @@ h3 {
 ul {
     list-style-type: none;
     padding: 0;
+    color: rgb(194, 193, 193);
 }
 
 li {
     margin-bottom: 10px;
     cursor: pointer;
+}
+
+p {
+    color: rgb(194, 193, 193);
 }
 
 .newsletterForm {
