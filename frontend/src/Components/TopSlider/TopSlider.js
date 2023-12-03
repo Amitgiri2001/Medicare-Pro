@@ -25,9 +25,6 @@ const TopSlider = () => {
                 <div className={styles.slide}>
                     <img src={slide5} alt="" />
                 </div>
-
-
-
             </div>
         </div>
 

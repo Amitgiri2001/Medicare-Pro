@@ -38,7 +38,7 @@ const ImageButton = (props) => {
             {text === "LogIn" && 
                 authenticationPageVisible && 
                 (
-                    <Link
+                    <div
                         className={styles.authentication_container} 
                         onMouseOver={handleAuthenticationContainerMouseOver}
                     >  
@@ -51,7 +51,7 @@ const ImageButton = (props) => {
                                 <span>Sign Up</span>
                             </h1>
                         </Link>
-                    </Link>
+                    </div>
                 )
             }
         </div>

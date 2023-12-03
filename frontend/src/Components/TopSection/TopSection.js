@@ -21,8 +21,6 @@ const TopSection = () => {
             <Card img={memberImg} title="Plus Member" offer="Upto 65% ff" />
             <Card img={offersImg} title="Offers" offer="Upto 70% ff" />
             <Card img={valueStoreImg} title="Value Store" offer="Upto 70% ff" />
-
-
         </div>
     )
 }
