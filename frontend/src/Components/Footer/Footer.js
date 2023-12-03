@@ -64,6 +64,7 @@ const Footer = () => {
         </div>
       </div>
       <footer className={styles.footer}>
+
         <div className={styles.section}>
           <h3>COMPANY</h3>
           <ul>
@@ -85,6 +86,7 @@ const Footer = () => {
             <li>FAQs</li>
           </ul>
         </div>
+
 
         <div className={styles.section}>
           <h3>BUSINESS</h3>

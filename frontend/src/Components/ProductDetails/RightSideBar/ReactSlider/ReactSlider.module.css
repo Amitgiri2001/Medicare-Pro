@@ -19,13 +19,18 @@
 }
 
 .text {
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; */
-    display: inline-block;
-    width: fit-content;
+    align-items: flex-start;
+    /* display: inline-block; */
+    width: 70%;
     margin-top: 10%;
+
+}
+
+.text p {
+    text-wrap: wrap;
 
 }
 
@@ -44,4 +49,14 @@
     position: absolute;
     top: 3%;
     right: 3%;
+}
+
+@media (max-width:500px) {
+    .text p {
+        font-size: small;
+    }
+
+    .img {
+        width: 25%;
+    }
 }

@@ -3,6 +3,7 @@ import styles from "./SingleProduct.module.css";
 import { Link } from "react-router-dom";
 import heart from "../images/heart-regular.svg";
 import heartSolid from "../images/heart-solid (1).svg";
+import Rating from "../../RatingSec/Rating";
 
 const SingleProduct = ({ data }) => {
 
@@ -36,10 +37,7 @@ const SingleProduct = ({ data }) => {
       <div className={styles.detailsContainer}>
         <Link to={`/products/${data.id}`}>
           <h2 className={styles.name}>{data.title}</h2>
-          <div className={styles.ratingContainer}>
-            <button className={styles.rating}>{data.rating.toFixed(1)} ⭐</button>
-            <p>232 Ratings & 124 Reviews</p>
-          </div>
+          <Rating rating={data.rating} />
           <p>Features:{data.description}</p>
         </Link>
       </div>

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import styles from "./ImageSlider.module.css";
+import ImageButton from "../../Button/ImageButton/ImageButton";
+import cartImg from "../../Navbar/images/cart-shopping-solid.svg"
+import buyNow from "../../Navbar/images/bolt-solid.svg";
 
 
 const ImageSlider = ({ images }) => {
@@ -29,6 +32,19 @@ const ImageSlider = ({ images }) => {
           src={imageSource}
           alt="Slide_Image"
         />
+
+
+        <div className={styles.buttons}>
+          <button className={styles.btn}>
+            <img src={cartImg} alt="btn" />
+            Add To Cart
+          </button>
+          <button className={styles.btn}>
+            <img src={buyNow} alt="btn" />
+            Buy Now
+          </button>
+
+        </div>
       </div>
     </div>
   );

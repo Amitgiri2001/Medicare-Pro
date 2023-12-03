@@ -1,6 +1,30 @@
+.more {
+    /* border: 1px solid black !important; */
+    border-radius: 5px;
+    margin: auto;
+    background-color: #f0f0f0;
+    width: 100vw;
+    padding-top: 3%;
+}
+
+.more div {
+    padding: 2% 3%;
+}
+
+.more p {
+    opacity: .8;
+}
+
+
+.details {
+    text-align: center;
+}
+
 .btn {
     display: flex;
-    /* justify-content: space-around; */
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .active {
@@ -12,22 +36,11 @@
 
 .btn button {
     padding: 1%;
-    border: 1px solid black;
+    border: none;
     border-radius: 2px;
     margin: .02%;
 }
 
-.more {
-    border: 1px solid black !important;
-    border-radius: 5px;
-    margin: 2%;
-    background-color: #f0f0f0;
-}
-
-.more div {
-    padding: 1% 2% 0%;
-}
-
-.more p {
-    opacity: .8;
+.btn button:hover {
+    border-bottom: 2px solid #F757A5;
 }

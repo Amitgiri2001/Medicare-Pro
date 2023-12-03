@@ -1,17 +1,20 @@
 .container {
-    /* height: 80vh; */
-    /* width: 100vw; */
+
+    width: 100vw;
+    height: max-content;
     display: flex;
 
 }
 
 .leftContainer {
     width: 50vw;
-    height: 85vh;
 }
 
 .rightContainer {
     width: 50vw;
-    height: 95vh;
+}
 
+.section {
+    width: 100vw;
+    /* flex-wrap: wrap; */
 }

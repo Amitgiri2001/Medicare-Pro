@@ -84,26 +84,6 @@ a {
     font-weight: bold;
 }
 
-/* rating button */
-.ratingContainer {
-    display: flex;
-    align-items: center;
-}
-
-.ratingContainer p {
-    margin: 0%;
-    opacity: .6;
-}
-
-.rating {
-    padding: 1%;
-    color: white;
-    background-color: green;
-    border: .3px solid rgb(255, 255, 255);
-    border-radius: 4px;
-    margin: 0% .5%;
-
-}
 
 /* heading */
 .name {
@@ -125,13 +105,7 @@ a {
         flex-direction: column;
     }
 
-    .rating {
-        width: 64px;
-    }
 
-    .ratingContainer p {
-        font-size: 80%;
-    }
 
     .heartImg {
         height: 15px;
