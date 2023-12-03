@@ -22,6 +22,8 @@ const AllProducts = () => {
     // discount filter
     const [discount, setDiscount] = useState(0);
 
+    const [compareArray, setCompareArray] = useState([]);
+
     const options = allCategory;
 
     // check if we did price filtering
@@ -41,6 +43,15 @@ const AllProducts = () => {
 
     const handleOptionClick = (option) => {
         setSelectedOption(option);
+    };
+    const handleCompareClick = (product, identifier) => {
+
+        if (identifier === "checked") {
+            setCompareArray((prevArray) => [...prevArray, product]);
+        }
+        else if (identifier === "unchecked") {
+            setCompareArray((prevArray) => prevArray.filter(pro => pro !== product));
+        }
     };
 
 
@@ -116,6 +127,9 @@ const AllProducts = () => {
 
         allCategory();
 
+
+
+
     }, [currentPage, selectedOption, pageLimit, isPriceFilter, discount]);
 
 
@@ -126,7 +140,19 @@ const AllProducts = () => {
             </div>
 
             <div className={styles.right}>
-                <RightSideBar isError={isError} isLoading={isLoading} products={products} prevPageHandler={prevPageHandler} currentPage={currentPage} nextPageHandler={nextPageHandler} totalPages={totalPages} />
+                <RightSideBar isError={isError} isLoading={isLoading} products={products} prevPageHandler={prevPageHandler} currentPage={currentPage} nextPageHandler={nextPageHandler} totalPages={totalPages} handleCompareClick={handleCompareClick} />
+
+
+                {/* compare Button */}
+                {compareArray.length >= 2 && <button
+                    className={styles.compare}
+
+                >
+                    Compare
+                </button>}
+
+                {console.log(compareArray)}
+
             </div>
 
         </div>

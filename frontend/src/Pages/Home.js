@@ -6,12 +6,12 @@ import Trending from '../Components/Trending/Trending';
 
 const Home = () => {
     return (
-        <React.Fragment>
+        <div>
             <TopSection />
             <TopSlider />
 
             <Trending />
-        </React.Fragment>
+        </div>
     )
 }
 

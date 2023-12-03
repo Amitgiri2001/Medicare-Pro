@@ -5,7 +5,7 @@ import React from 'react';
 import styles from "./RightSideBar.module.css";
 import SingleProduct from './SingleProduct/SingleProduct';
 
-const RightSideBar = ({ isError, isLoading, products, prevPageHandler, currentPage, nextPageHandler, totalPages }) => {
+const RightSideBar = ({ isError, isLoading, products, prevPageHandler, currentPage, nextPageHandler, totalPages, handleCompareClick }) => {
 
 
 
@@ -15,7 +15,7 @@ const RightSideBar = ({ isError, isLoading, products, prevPageHandler, currentPa
         {!isError && !isLoading && products.length !== 0 && (<div className={styles.container}>
             {products.map(product => (
                 <div>
-                    <SingleProduct key={product.id} data={product} />
+                    <SingleProduct key={product.id} data={product} handleCompareClick={handleCompareClick} />
                     <hr className={styles.line} />
                 </div>
 

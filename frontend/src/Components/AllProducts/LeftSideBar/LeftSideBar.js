@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from "./LeftSideBar.module.css"
 import Item from './Item/Item';
 
-// input Price 
-import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css';
+
 
 const LeftSideBar = ({ allCategory, handleOptionClick, setIsPriceFilter, setDiscount }) => {
 
@@ -49,7 +47,7 @@ const LeftSideBar = ({ allCategory, handleOptionClick, setIsPriceFilter, setDisc
     return (
         <div className={styles.container}>
             <Item title="Category" options={allCategory} handleOptionClick={handleOptionClick} isPrice={false} isOpen={true} />
-            <Item title="Price" options={options} isPrice={true} isOpen={true}>
+            {/* <Item title="Price" options={options} isPrice={true} isOpen={true}>
                 <div className={styles.InputRange}>
                     <InputRange
                         // classNames={customInputRangeClassNames}
@@ -79,8 +77,8 @@ const LeftSideBar = ({ allCategory, handleOptionClick, setIsPriceFilter, setDisc
                         onChange={(event) => handlePriceChange(event, "max")}
                     />
                 </div>
-                {/* {console.log(value)} */}
-            </Item>
+                
+            </Item> */}
             <Item title="Brand" options={options} isPrice={false} isOpen={false} />
             <Item title="Discounts" options={discounts} isPrice={false} isOpen={true} setDiscount={setDiscount} />
         </div>

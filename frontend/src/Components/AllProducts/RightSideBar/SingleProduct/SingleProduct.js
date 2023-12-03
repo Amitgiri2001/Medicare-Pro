@@ -5,7 +5,7 @@ import heart from "../images/heart-regular.svg";
 import heartSolid from "../images/heart-solid (1).svg";
 import Rating from "../../RatingSec/Rating";
 
-const SingleProduct = ({ data }) => {
+const SingleProduct = ({ data, handleCompareClick }) => {
 
   const [heartImg, setHeartImg] = useState(heart);
   function handleHeartImgChange(event) {
@@ -15,6 +15,20 @@ const SingleProduct = ({ data }) => {
     }
     else {
       setHeartImg(heart);
+    }
+  }
+
+  // compare button
+  function handleCompareChange(event) {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      handleCompareClick(data, "checked");
+      console.log("Checked");
+    }
+    else {
+      handleCompareClick(data, "unchecked");
+      console.log("unChecked");
+
     }
   }
   return (
@@ -29,8 +43,8 @@ const SingleProduct = ({ data }) => {
           />
         </Link>
         <img className={styles.heartImg} src={heartImg} onClick={(event) => handleHeartImgChange(event)} alt="heart" />
-        <div className={styles.compare}>
-          <input type="checkbox" id="compare" />
+        <div className={styles.compare} >
+          <input type="checkbox" id="compare" onChange={(event) => handleCompareChange(event)} />
           <label htmlFor="compare">Add for Compare</label>
         </div>
       </div>
