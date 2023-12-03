@@ -3,7 +3,9 @@ import styles from "./More.module.css";
 const More = ({ description }) => {
   const [activeContentIndex, setActiveContentIndex] = useState(0);
   return (
+
     <div className={styles.more}>
+      <h1 className={styles.details}>Details</h1>
       <div className={styles.btn}>
         <button
           className={activeContentIndex === 0 ? styles.active : ""}

@@ -6,16 +6,12 @@
 }
 
 .content {
-    width: 50%;
+    width: 90%;
     /* Set the width to 50% for the right half */
     padding: 20px;
 }
 
-.rating {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
+
 
 .addToCartBtn {
     background-color: #4caf50;
@@ -53,6 +49,7 @@
 .rs {
     padding: 2%;
     font-size: large;
+    font-weight: bold;
 }
 
 .mrp {
@@ -70,13 +67,17 @@
 
 /* slider Container */
 .sliderContainer {
-    width: 45vw;
+    width: 44vw;
     border: 2px solid #f757a5;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: ; */
+    /* align-items: center; */
+}
+
+.slider {
+    /* margin: auto; */
 }
 
 .premium p {
@@ -89,4 +90,57 @@
     /* border-radius: 10px; */
     font-weight: 500;
     font-size: larger;
+}
+
+
+/* price Tag */
+.card_price {
+    display: inline-block;
+
+    width: auto;
+    height: 20px;
+
+    background-color: #f757a5;
+    -webkit-border-radius: 3px 4px 4px 3px;
+    -moz-border-radius: 3px 4px 4px 3px;
+    border-radius: 3px 4px 4px 3px;
+
+    border-left: 1px solid #f757a5;
+
+    /* This makes room for the triangle */
+    margin-left: 10px;
+    line-height: 20px;
+    position: relative;
+
+    color: white;
+    font-weight: 300;
+    font-size: 90%;
+
+    padding: 0 10px 0 10px;
+}
+
+/* Makes the triangle */
+.card_price:before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #f757a5;
+}
+
+/* Makes the circle */
+.card_price:after {
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    display: block;
+    position: absolute;
+    left: -6px;
+    top: 8px;
 }

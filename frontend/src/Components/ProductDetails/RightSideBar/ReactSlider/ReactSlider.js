@@ -19,8 +19,8 @@ const ReactSlider = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />,
   };
   return (
     <Slider {...settings} className={styles.slider}>

@@ -1,7 +1,8 @@
 /* counter */
 .pageContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     background-color: #f0f0f0;
     padding: 20px;
@@ -18,16 +19,17 @@
 .sections {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    width: 30vw;
 }
 
 .sections img {
-    height: 100px;
-    width: auto;
+    width: 25%;
+    height: auto;
 }
 
 .sections p {
-    font-size: 24px;
+    font-size: 110%;
     color: #f757a5;
     margin: 10px 0;
 
@@ -35,7 +37,7 @@
 
 .number,
 .sections span {
-    font-size: 2.5rem;
+    font-size: 120%;
     font-weight: bold;
     color: #f757a5;
 }
@@ -49,6 +51,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: auto;
+    flex-wrap: wrap;
 }
 
 .section {
@@ -81,7 +84,7 @@ li {
 }
 
 .go {
-    background-color: #ff5733;
+    background-color: #f757a5;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -90,4 +93,39 @@ li {
 
 .appDownload {
     margin-top: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .newsletterForm {
+        flex-direction: column;
+
+    }
+
+    .newsletterForm input {
+        margin-bottom: 10px;
+    }
+
+
+}
+
+@media screen and (max-width: 550px) {
+
+    /* counter section */
+    .sections img {
+        width: 33%;
+        height: auto;
+    }
+
+    .sections p {
+        font-size: 100%;
+        margin: 10px 0;
+
+    }
+
+    .number,
+    .sections span {
+        font-size: 100%;
+    }
 }
