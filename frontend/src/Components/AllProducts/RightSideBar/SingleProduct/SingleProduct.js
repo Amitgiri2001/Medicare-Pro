@@ -40,7 +40,7 @@ const SingleProduct = ({ data }) => {
             <button className={styles.rating}>{data.rating.toFixed(1)} ⭐</button>
             <p>232 Ratings & 124 Reviews</p>
           </div>
-          <p>{data.description}</p>
+          <p>Features:{data.description}</p>
         </Link>
       </div>
 
