@@ -2,6 +2,7 @@
     display: flex;
     height: 100%;
     width: 100%;
+    position: relative;
 }
 
 .left {
@@ -16,6 +17,16 @@
 .left img {
     margin: 5% 0%;
     border-radius: 15%;
+}
+
+.hoverEffect {
+    transition: transform 0.3s ease-in-out;
+    /* You can adjust the transition properties */
+}
+
+.hoverEffect:hover {
+    transform: scale(1.1);
+    /* You can adjust the scale factor */
 }
 
 .demo {
@@ -79,6 +90,34 @@
     height: auto;
     max-height: 90vh;
 
+}
+
+
+/* Zoom */
+
+.image_container {
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+.zoomed_image {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 150%;
+
+    /* Replace with your zoomed image */
+    background-repeat: no-repeat;
+    background-size: 150% 150%;
+    /* Adjust the zoom level */
+    width: 100%;
+    /* Adjust the zoom level */
+    height: 100%;
+    transform: translateX(-50%);
+    pointer-events: none;
 }
 
 @media (max-width:500px) {

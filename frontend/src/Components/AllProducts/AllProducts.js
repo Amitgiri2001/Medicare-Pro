@@ -4,6 +4,9 @@ import React, { useState, useEffect } from 'react';
 import styles from "./AllProducts.module.css";
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 import RightSideBar from './RightSideBar/RightSideBar';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import CompareTable from './CompareTable/CompareTable';
 
 
 const AllProducts = () => {
@@ -28,6 +31,13 @@ const AllProducts = () => {
 
     // check if we did price filtering
     const [isPriceFilter, setIsPriceFilter] = useState({ min: 0, max: 300000 });
+
+
+    // Modal Code
+    const [open, setOpen] = useState(false);
+
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
 
     function nextPageHandler() {
         setCurrentPage((currentPageNo) => currentPageNo + 1)
@@ -144,12 +154,12 @@ const AllProducts = () => {
 
 
                 {/* compare Button */}
-                {compareArray.length >= 2 && <button
-                    className={styles.compare}
-
-                >
-                    Compare
-                </button>}
+                {compareArray.length >= 2 && <div>
+                    <button onClick={onOpenModal} className={styles.compare}>Compare</button>
+                    <Modal open={open} onClose={onCloseModal} center>
+                        <CompareTable product1={compareArray[compareArray.length - 1]} product2={compareArray[compareArray.length - 2]} />
+                    </Modal>
+                </div>}
 
                 {console.log(compareArray)}
 
@@ -158,5 +168,6 @@ const AllProducts = () => {
         </div>
     )
 }
+
 
 export default AllProducts

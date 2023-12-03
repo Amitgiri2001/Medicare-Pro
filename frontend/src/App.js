@@ -12,6 +12,7 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import AllProducts from './Components/AllProducts/AllProducts';
 
+
 const router = createBrowserRouter([
   // template's
   {
