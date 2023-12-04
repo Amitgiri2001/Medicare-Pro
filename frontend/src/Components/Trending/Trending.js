@@ -44,7 +44,6 @@ const Trending = () => {
                 <div>
                     <img src={img6} alt="Trending_Image" />
                 </div>
-
             </Slider>
         </div>
 
