@@ -6,7 +6,7 @@
     width: 2em;
     /* height: 80px; */
     padding: .5em 2em;
-    margin: 0% 1%;
+    margin: 0 0.3rem;
     border: 0.01rem solid gray;
     border-radius: 10px;
     background-color: #fff;
@@ -26,13 +26,26 @@
 .img {
     width: 50%;
     height: auto;
-
 }
 
 .btn {
     border: none;
     background-color: #fff;
     cursor: pointer;
+}
+@media(max-width : 600px) {
+    .modifyContainer {
+        border: none;
+        outline: none;
+        padding: 0.7rem 0.3rem;
+        border-radius: 100%;
+    }
+    .modifyContainer .btn {
+        display: none;
+    }
+    .modifyContainer .img {
+        width: 1.2rem;
+    }
 }
 
 .container i {

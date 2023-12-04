@@ -22,7 +22,7 @@ const ImageButton = (props) => {
     }
 
     return (
-        <div className={styles.container}
+        <div className={` ${styles.container} ${text !== "LogIn"  ? styles.modifyContainer : ""}`}
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
         >

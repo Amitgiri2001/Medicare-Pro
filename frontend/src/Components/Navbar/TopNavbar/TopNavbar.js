@@ -7,7 +7,7 @@ import ProductImg from "../images/Product.svg"
 import logoImage from "../images/notes-medical-solid.svg";
 import ImageButton from "../../Button/ImageButton/ImageButton";
 import { Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
 
 
 function TopNavbar() {
@@ -15,7 +15,6 @@ function TopNavbar() {
   const [showSearchButton, setShowSearchButton] = useState(true);
   const [showImageButton, setShowImageButton] = useState(true);
   const [showArraow, setShowArrow] = useState(false);
-  const [showLogo, setShowLogo] = useState(true);
 
   const handleSearchContainer = (e) => {
     e.preventDefault();
@@ -23,7 +22,6 @@ function TopNavbar() {
     setShowSearchButton(!showSearchButton);
     setShowImageButton(!showImageButton);
     setShowArrow(!showArraow);
-    setShowLogo(!showLogo);
   }
 
   const handleWindowEvent = () => {
@@ -34,13 +32,11 @@ function TopNavbar() {
       setShowSearchButton(true);
       setShowImageButton(true);
       setShowArrow(false);
-      setShowLogo(true);
     } else {
       setShowSearchContainer(true);
       setShowSearchButton(false);
       setShowImageButton(true);
       setShowArrow(false);
-      setShowLogo(true);
     }
   }
   useEffect(() => {
@@ -58,9 +54,7 @@ function TopNavbar() {
 
   return (
     <div className={styles.TopNavbar}>
-      {showLogo && 
-        <img className={styles.logo} src={logoImage} alt="logoImage Medicare" />
-      }
+      <img className={styles.logo} src={logoImage} alt="logoImage Medicare" />
       <div className={`${styles.searchContainer}`} style={!showSearchButton ? {width : "80%"} : {}}>
         {showSearchButton &&
           <i className={styles.search_icon}>
@@ -70,11 +64,6 @@ function TopNavbar() {
               alt="search_image"
               onClick={handleSearchContainer}
             />
-          </i>
-        }
-        {showArraow && 
-          <i className={styles.arrow_icon} onClick={handleSearchContainer}>
-            <FaArrowLeft />
           </i>
         }
         {showSearchContainer &&
@@ -92,6 +81,11 @@ function TopNavbar() {
             />
           </button>
         </div>
+        }
+        {showArraow && 
+          <i className={styles.arrow_icon} onClick={handleSearchContainer}>
+            <FaArrowRight />
+          </i>
         }
       </div>
       {showImageButton &&

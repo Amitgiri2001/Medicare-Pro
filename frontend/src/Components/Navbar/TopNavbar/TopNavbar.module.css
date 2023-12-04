@@ -17,7 +17,7 @@
 .logo {
     width: 2.5rem;
     height: auto;
-    margin: 0% 2%;
+    margin: 0 0.5rem;
 }
 
 /* search Bar styles */
@@ -67,7 +67,7 @@
     font-size: 1.3rem;
     padding: 0.6rem;
     border-radius: 100%;
-    margin-right: 3%;
+    margin-left: 0.3rem;
     cursor: pointer;
 }
 .arrow_icon:hover {
