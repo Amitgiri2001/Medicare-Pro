@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ImageButton.module.css';
 import { Link } from 'react-router-dom';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
@@ -9,9 +9,16 @@ const ImageButton = (props) => {
     const text = props.text;
 
     const [authenticationPageVisible, setAuthenticationPageVisible] = useState(false);
+    const [showArrowIcon, setShowArrowIcon] = useState(true);
+    const [linkActive, setLinkActive] = useState(false);
+
     const handleMouseOver = () => {
         if (text === "LogIn") {
-            setAuthenticationPageVisible(true);
+            if(window.innerWidth <= 600) {
+                setAuthenticationPageVisible(false);
+            } else {
+                setAuthenticationPageVisible(true);
+            }
         }
     };
     const handleMouseLeave = () => {
@@ -21,22 +28,44 @@ const ImageButton = (props) => {
         setAuthenticationPageVisible(true);
     }
 
+    const handleWindowEvent = () => {
+        const windowWidth = window.innerWidth;
+        if(windowWidth <= 600) {
+            setShowArrowIcon(false);
+        } else {
+            setShowArrowIcon(true);
+        }
+    }
+    useEffect(() => {
+        // Add listeners to handle window resize and scroll
+        window.addEventListener("resize", handleWindowEvent);
+    
+        // Initial handling of window size
+        handleWindowEvent();
+    
+        // Cleanup the listeners when the component unmounts
+        return () => {
+          window.removeEventListener("resize", handleWindowEvent);
+        };
+      },[])
+
     return (
-        <div className={` ${styles.container} ${text !== "LogIn"  ? styles.modifyContainer : ""}`}
+        <Link 
+            to={text === "LogIn" && "login"} 
+            className={`${styles.container} ${props.text !== "LogIn" && styles.sidebarContainer} ${props.text === "Signup & Login" && styles.sidebarSignupAndLogin}`}
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
         >
             <img className={styles.img} src={Image} alt="user_image" />
             <button className={styles.btn}>{text}</button>
-            {text === "LogIn" &&
+            {showArrowIcon && text === "LogIn" &&
                 (
                     <i>
                         {authenticationPageVisible ? <FaChevronUp /> : <FaChevronDown />}
                     </i>
                 )
             }
-            {text === "LogIn" &&
-                authenticationPageVisible &&
+            {text === "LogIn" && authenticationPageVisible &&
                 (
                     <Link
                         className={styles.authentication_container}
@@ -60,13 +89,12 @@ const ImageButton = (props) => {
                         <Link to="signup">
                             <h1 className={styles.signup}>
                                 <span>Orders</span>
-
                             </h1>
                         </Link>
                     </Link>
                 )
             }
-        </div>
+        </Link>
     )
 }
 
