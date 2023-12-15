@@ -8,6 +8,8 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import CompareTable from './CompareTable/CompareTable';
 
+// Redux
+import { useSelector } from 'react-redux';
 
 const AllProducts = () => {
     // state for pagination
@@ -32,6 +34,9 @@ const AllProducts = () => {
     // check if we did price filtering
     const [isPriceFilter, setIsPriceFilter] = useState({ min: 0, max: 300000 });
 
+    // search Data
+    const searchData = useSelector((state) => state.value);
+    console.log(searchData);
 
     // Modal Code
     const [open, setOpen] = useState(false);
@@ -121,11 +126,11 @@ const AllProducts = () => {
         // filtering product by Price
         // ///////in frontend/
 
-        function filterProductByPrice(minPrice, maxPrice) {
-            setIsLoading(true);
-            setProducts((prevProducts) => { return prevProducts.filter(product => product.price * 80 >= minPrice && product.price * 80 < maxPrice) });
-            setIsLoading(false);
-        }
+        // function filterProductByPrice(minPrice, maxPrice) {
+        //     setIsLoading(true);
+        //     setProducts((prevProducts) => { return prevProducts.filter(product => product.price * 80 >= minPrice && product.price * 80 < maxPrice) });
+        //     setIsLoading(false);
+        // }
 
         // currently not working
         // filterProductByPrice(isPriceFilter.min, isPriceFilter.max);
@@ -138,9 +143,22 @@ const AllProducts = () => {
         allCategory();
 
 
+        // Search
+        if (searchData !== "" && searchData != undefined) {
+            async function searchFilterProduct() {
+                setIsLoading(true);
+                const response = await fetch(`https://dummyjson.com/products/search?q=${searchData}`);
+
+                const product = await response.json();
+                setProducts(product.products);
+                setIsLoading(false);
+            }
+            searchFilterProduct();
+        }
 
 
-    }, [currentPage, selectedOption, pageLimit, isPriceFilter, discount]);
+
+    }, [currentPage, selectedOption, pageLimit, isPriceFilter, discount, searchData]);
 
 
     return (
@@ -161,7 +179,7 @@ const AllProducts = () => {
                     </Modal>
                 </div>}
 
-                {console.log(compareArray)}
+                {/* {console.log(compareArray)} */}
 
             </div>
 

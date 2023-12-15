@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import styles from "./Authentication.module.css";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/AuthReducer"
 
 const Loginform = () => {
+    // reducer
+
+    const dispatch = useDispatch();
+
     const [enteredValues, setEnteredValues] = useState({
         email: "", password: "",
     })
@@ -23,6 +29,7 @@ const Loginform = () => {
         }).then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
+                dispatch(authActions.logIn())
             })
             .catch(error => {
                 console.error('Error:', error);

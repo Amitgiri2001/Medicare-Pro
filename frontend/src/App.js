@@ -12,6 +12,11 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import AllProducts from './Components/AllProducts/AllProducts';
 
+// Store
+import store from "./store/index";
+import { Provider } from 'react-redux';
+import CartPage from './Pages/Cart';
+
 
 const router = createBrowserRouter([
   // template's
@@ -23,7 +28,7 @@ const router = createBrowserRouter([
       { path: '/signup', element: <Signup /> },
       { path: '/products', element: <AllProducts /> },
       { path: '/products/:productId', element: <ProductDetailsPage /> },
-      { path: '/all_products', element: <AllProducts /> },
+      { path: 'cart', element: <CartPage /> },
     ]
   },
 
@@ -31,9 +36,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <RouterProvider router={router} />
-    </div>
+    </Provider>
 
   );
 }

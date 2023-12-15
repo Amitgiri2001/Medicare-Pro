@@ -38,9 +38,9 @@ const ProductDetails = () => {
   return (
     <div>
       {product.length !== 0 && <div ref={containerRef} className={styles.container}>
-        {console.log(product)}
+        {/* {console.log(product)} */}
         <div className={styles.leftContainer}>
-          <ImageSlider images={images} />
+          <ImageSlider images={images} id={id} />
         </div>
         <div className={styles.rightContainer}>
           <RightSideBar title={title} description={description} rating={rating} price={price} discountPercentage={discountPercentage} />

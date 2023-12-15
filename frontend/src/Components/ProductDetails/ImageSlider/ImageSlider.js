@@ -4,8 +4,12 @@ import ImageButton from "../../Button/ImageButton/ImageButton";
 import cartImg from "../../Navbar/images/cart-shopping-solid.svg"
 import buyNow from "../../Navbar/images/bolt-solid.svg";
 
+// reducer
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../../store/CartReducer";
 
-const ImageSlider = ({ images }) => {
+
+const ImageSlider = ({ images, id }) => {
   const [activeContentIndex, setActiveContentIndex] = useState(0);
   const [imageSource, setImageSource] = useState(images[0]);
 
@@ -25,6 +29,13 @@ const ImageSlider = ({ images }) => {
   const handleMouseMove = (e) => {
     setMousePosition({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
   };
+
+  // reducer
+  const dispatch = useDispatch();
+
+  function handleAddToCart() {
+    dispatch(cartActions.addToCart({ id: id, qty: 1 }));
+  }
 
 
   return (
@@ -70,7 +81,7 @@ const ImageSlider = ({ images }) => {
 
 
         <div className={styles.buttons}>
-          <button className={styles.btn}>
+          <button className={styles.btn} onClick={handleAddToCart}>
             <img src={cartImg} alt="btn" />
             Add To Cart
           </button>

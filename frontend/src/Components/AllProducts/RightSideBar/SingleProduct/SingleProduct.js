@@ -5,6 +5,7 @@ import heart from "../images/heart-regular.svg";
 import heartSolid from "../images/heart-solid (1).svg";
 import Rating from "../../RatingSec/Rating";
 
+
 const SingleProduct = ({ data, handleCompareClick }) => {
 
   const [heartImg, setHeartImg] = useState(heart);

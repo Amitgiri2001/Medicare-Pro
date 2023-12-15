@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./TopNavbar.module.css";
 import userImage from "../images/user-solid.svg";
 import cartImage from "../images/cart-shopping-solid.svg";
@@ -9,6 +9,10 @@ import ImageButton from "../../Button/ImageButton/ImageButton";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
 
+// Reducer
+import { useSelector, useDispatch } from "react-redux";
+import { searchActions } from "../../../store/SearchDataReducer";
+
 
 function TopNavbar() {
   const [showSearchContainer, setShowSearchContainer] = useState(true);
@@ -16,6 +20,14 @@ function TopNavbar() {
   const [showImageButton, setShowImageButton] = useState(true);
   const [showArraow, setShowArrow] = useState(false);
   const [showLogo, setShowLogo] = useState(true);
+
+  // search Function  
+  const [searchText, setSearchText] = useState("");
+  // reducer
+  const text = useSelector((state) => state.searchText.value)
+  console.log(text);
+
+  const dispatch = useDispatch()
 
   const handleSearchContainer = (e) => {
     e.preventDefault();
@@ -29,7 +41,7 @@ function TopNavbar() {
   const handleWindowEvent = () => {
     // Get the current window width
     const windowWidth = window.innerWidth;
-    if(windowWidth <= 850) {
+    if (windowWidth <= 850) {
       setShowSearchContainer(false);
       setShowSearchButton(true);
       setShowImageButton(true);
@@ -43,6 +55,13 @@ function TopNavbar() {
       setShowLogo(true);
     }
   }
+
+
+  // search
+  function handleSearch() {
+
+  }
+
   useEffect(() => {
     // Add listeners to handle window resize and scroll
     window.addEventListener("resize", handleWindowEvent);
@@ -54,14 +73,17 @@ function TopNavbar() {
     return () => {
       window.removeEventListener("resize", handleWindowEvent);
     };
-  },[])
+  }, [])
 
   return (
+
+
     <div className={styles.TopNavbar}>
-      {showLogo && 
+      {/* {console.log(text)} */}
+      {showLogo &&
         <img className={styles.logo} src={logoImage} alt="logoImage Medicare" />
       }
-      <div className={`${styles.searchContainer}`} style={!showSearchButton ? {width : "80%"} : {}}>
+      <div className={`${styles.searchContainer}`} style={!showSearchButton ? { width: "80%" } : {}}>
         {showSearchButton &&
           <i className={styles.search_icon}>
             <img
@@ -72,7 +94,7 @@ function TopNavbar() {
             />
           </i>
         }
-        {showArraow && 
+        {showArraow &&
           <i className={styles.arrow_icon} onClick={handleSearchContainer}>
             <FaArrowLeft />
           </i>
@@ -83,22 +105,25 @@ function TopNavbar() {
               type="text"
               className={styles.searchInput}
               placeholder="Search..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
             />
-            <button className={styles.searchButton}>
-            <img
-              className={styles.search_img}
-              src={searchImage}
-              alt="search_image"
-            />
-          </button>
-        </div>
+            <button className={styles.searchButton} onClick={() => dispatch(searchActions.update(searchText))} >
+              <img
+                className={styles.search_img}
+                src={searchImage}
+                alt="search_image"
+              />
+            </button>
+          </div>
         }
       </div>
       {showImageButton &&
         <ImageButton url={userImage} text="LogIn" />
       }
       {showImageButton &&
-        <ImageButton url={cartImage} text="Cart" />
+        <Link to="cart">
+          <ImageButton url={cartImage} text="Cart" /></Link>
       }
       {showImageButton &&
         <Link to="products">

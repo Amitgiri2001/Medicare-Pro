@@ -107,16 +107,12 @@
     top: 0;
     right: 0;
     bottom: 0;
-    left: 150%;
-
-    /* Replace with your zoomed image */
+    left: 100%;
     background-repeat: no-repeat;
     background-size: 150% 150%;
-    /* Adjust the zoom level */
     width: 100%;
-    /* Adjust the zoom level */
     height: 100%;
-    transform: translateX(-50%);
+
     pointer-events: none;
 }
 
