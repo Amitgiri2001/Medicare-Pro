@@ -6,10 +6,9 @@
     width: 2em;
     /* height: 80px; */
     padding: .5em 2em;
-    margin: 0% 1%;
+    margin: 0 0.3rem;
     border: 0.01rem solid gray;
     border-radius: 10px;
-    background-color: #fff;
     cursor: pointer;
 }
 
@@ -26,12 +25,10 @@
 .img {
     width: 50%;
     height: auto;
-
 }
 
 .btn {
     border: none;
-    background-color: #fff;
     cursor: pointer;
 }
 
@@ -81,4 +78,63 @@
 
 .authentication_container .login span {
     color: blue;
+}
+
+@media(max-width : 600px) {
+    .container {
+        border: none;
+        outline: none;
+        background-color: initial;
+    }
+    .sidebarContainer {
+        width: 11rem;
+    }
+    .sidebarContainer .img {
+        width: 10%;
+    }
+    .sidebarContainer {
+        justify-content: flex-start;
+        padding-left: 0.5rem;
+    }
+    .sidebarContainer .btn {
+        border: none;
+        outline: none;
+        background-color: blueviolet;
+        color: white;
+    }
+    .sidebarContainer:hover {
+        background-color: initial;
+    }
+    .sidebarContainer:hover .btn {
+        background-color: initial;
+        color:  initial;
+    }
+    .sidebarSignupAndLogin {
+        display: flex !important;
+        background-color: white;
+        margin-top: 0.8rem;
+    }
+    .sidebarSignupAndLogin .btn {
+        background-color: white;
+        color: black;
+    }
+    
+    .sidebarSignupAndLogin:hover {
+        background-color: white !important;
+    }
+
+    .sidebarSignupAndLogin:hover .btn {
+        color: black !important;
+    }
+    
+    .sidebarContainer:hover {
+        transform: none;
+    }
+    
+    .sidebarContainer:hover .btn {
+        color: white;
+    }
+}
+.sidebarSignupAndLogin {
+    display: none;
 }
