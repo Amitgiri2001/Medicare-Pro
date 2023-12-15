@@ -1,11 +1,21 @@
 .container {
     /* padding: 2% 0%; */
-    margin: 2% 0%;
+    margin: 2rem 0;
 }
 
 .slider {
-    width: 95vw;
+    width: 90vw;
     margin: auto;
+}
+@media(max-width: 850px) {
+    .slider {
+        width: 85vw;
+    }
+}
+@media(max-width: 800px) {
+    .slider {
+        width: 80vw;
+    }
 }
 
 .container div img {
@@ -13,4 +23,8 @@
     width: 90%;
     height: auto;
     margin: auto;
+}
+
+.slick-prev {
+    left: 0px !important;
 }
