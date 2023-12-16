@@ -23,11 +23,11 @@ const router = createBrowserRouter([
   {
     path: '/', element: <Template />,
     errorElement: <Error />, children: [
-      { path: '/', element: <Home /> },
-      { path: '/login', element: <Login /> },
-      { path: '/signup', element: <Signup /> },
-      { path: '/products', element: <AllProducts /> },
-      { path: '/products/:productId', element: <ProductDetailsPage /> },
+      { path: '', element: <Home /> },
+      { path: 'login', element: <Login /> },
+      { path: 'signup', element: <Signup /> },
+      { path: 'products', element: <AllProducts /> },
+      { path: 'products/:productId', element: <ProductDetailsPage /> },
       { path: 'cart', element: <CartPage /> },
     ]
   },

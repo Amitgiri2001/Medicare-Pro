@@ -23,14 +23,6 @@ function TopNavbar() {
   const [showButtonContainer, setShowButtonContainer] = useState(false);
   const [previousScrollPosition, setPreviousScrollPosition] = useState(0);
 
-  // search Function  
-  const [searchText, setSearchText] = useState("");
-  // reducer
-  const text = useSelector((state) => state.searchText.value)
-  console.log(text);
-
-  const dispatch = useDispatch()
-
   const handleSearchContainer = (e) => {
     e.preventDefault();
     setShowSearchContainer(!showSearchContainer);
@@ -47,57 +39,45 @@ function TopNavbar() {
   const handleWindowEvent = () => {
     // Get the current window width
     const windowWidth = window.innerWidth;
+    const scrollPosition = window.scrollY;
 
     if (windowWidth <= 850) {
-
-      const scrollPosition = window.scrollY;
-
-      if (windowWidth <= 850) {
-
-        setShowSearchContainer(false);
-        setShowSearchButton(true);
-        setShowImageButton(true);
-        setShowArrow(false);
-      } else {
-        setShowSearchContainer(true);
-        setShowSearchButton(false);
-        setShowImageButton(true);
-        setShowArrow(false);
-      }
-      if (windowWidth <= 600) {
+      setShowSearchContainer(false);
+      setShowSearchButton(true);
+      setShowImageButton(true);
+      setShowArrow(false);
+    } else {
+      setShowSearchContainer(true);
+      setShowSearchButton(false);
+      setShowImageButton(true);
+      setShowArrow(false);
+    }
+    if (windowWidth <= 600) {
+      setShowButtonContainer(false);
+      if (scrollPosition !== previousScrollPosition) {
+        // Scroll position changed, hide sidebar
         setShowButtonContainer(false);
-        if (scrollPosition !== previousScrollPosition) {
-          // Scroll position changed, hide sidebar
-          setShowButtonContainer(false);
-        }
-        //Set current scrollposition as previous scroll position
-        setPreviousScrollPosition(scrollPosition);
-      } else {
-        setShowButtonContainer(true);
       }
+      //Set current scrollposition as previous scroll position
+      setPreviousScrollPosition(scrollPosition);
+    } else {
+      setShowButtonContainer(true);
     }
-
-
-    // search
-    function handleSearch() {
-
-    }
-
-    useEffect(() => {
-      // Add listeners to handle window resize and scroll
-      window.addEventListener("resize", handleWindowEvent);
-      window.addEventListener("scroll", handleWindowEvent);
-
-      // Initial handling of window size
-      handleWindowEvent();
-
-      // Cleanup the listeners when the component unmounts
-      return () => {
-        window.removeEventListener("resize", handleWindowEvent);
-        window.removeEventListener("scroll", handleWindowEvent);
-      };
-    }, [])
   }
+  useEffect(() => {
+    // Add listeners to handle window resize and scroll
+    window.addEventListener("resize", handleWindowEvent);
+    window.addEventListener("scroll", handleWindowEvent);
+
+    // Initial handling of window size
+    handleWindowEvent();
+
+    // Cleanup the listeners when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleWindowEvent);
+      window.removeEventListener("scroll", handleWindowEvent);
+    };
+  }, [])
 
   const toggleSidebar = (e) => {
     e.preventDefault();
@@ -105,46 +85,19 @@ function TopNavbar() {
   }
 
   return (
-
-
-
-    <div className={styles.TopNavbar}>
-
-      {showLogo &&
-        <img className={styles.logo} src={logoImage} alt="logoImage Medicare" />
-      }
-      <div className={`${styles.searchContainer}`} style={!showSearchButton ? { width: "80%" } : {}}>
-        {showSearchButton &&
-          <i className={styles.search_icon}>
-            <img
-              className={`${styles.search_img} ${styles.search_img_visibility}`}
-              src={searchImage}
-              alt="search_image"
-              onClick={handleSearchContainer}
-            />
-          </i>
-        }
-        {showArraow &&
-          <i className={styles.arrow_icon} onClick={handleSearchContainer}>
-            <FaArrowLeft />
-          </i>
-        }
-      </div>
+    <div>
       <div className={styles.TopNavbar}>
         <i className={styles.toggleIcon} onClick={toggleSidebar}><FaBars /></i>
         <img className={styles.logo} src={logoImage} alt="logoImage Medicare" />
         <div className={`${styles.searchContainer}`} style={!showSearchButton ? { width: "80%" } : {}}>
-
           {showSearchContainer &&
             <div className={styles.searchInputContainer}>
               <input
                 type="text"
                 className={styles.searchInput}
                 placeholder="Search..."
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
               />
-              <button className={styles.searchButton} onClick={() => dispatch(searchActions.update(searchText))} >
+              <button className={styles.searchButton}>
                 <img
                   className={styles.search_img}
                   src={searchImage}
@@ -172,28 +125,18 @@ function TopNavbar() {
         {showImageButton &&
           <ImageButton url={userImage} text="LogIn" />
         }
-
-        {showImageButton &&
-          <Link to="cart">
-            <ImageButton url={cartImage} text="Cart" /></Link>
-        }
-        {showImageButton &&
-          <Link to="products">
-            <ImageButton url={ProductImg} text="Products" />
-          </Link>
-        }
-        {showImageButton &&
-          <ImageButton url={cartImage} text="Cart" />
-      {showButtonContainer &&
+        {showButtonContainer &&
           <div className={`${styles.buttonContainer} ${showSearchContainer && styles.modifiedbuttonContainer}`}>
             <Link to="signup">
               <ImageButton url={userImage} text="Signup & Login" />
             </Link>
-            {showImageButton &&
-              <Link to="products">
+            <a href="products">
+              {showImageButton &&
+
                 <ImageButton url={ProductImg} text="Products" />
-              </Link>
-            }
+
+              }
+            </a>
             {showImageButton &&
               <ImageButton url={cartImage} text="Cart" />
             }
@@ -203,12 +146,12 @@ function TopNavbar() {
               </Link>
             }
           </div>
-
         }
       </div>
       {showSearchContainer && <div className={styles.searchArea}></div>}
     </div>
   );
 }
+
 
 export default TopNavbar
